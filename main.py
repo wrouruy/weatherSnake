@@ -28,10 +28,10 @@ def getWeather(city):
         data = json.loads(response.read())
         currentWeather['cityName'].set(data['name'] + '🏢')
         currentWeather['cloudInfo'].set(data['weather'][0]['description'] + '⛅')
-        currentWeather['temp'].set(f'{round(data['main']['temp_min'] - 273.15, 1)} - {round(data['main']['temp_max'] - 273.15, 1)} ℃')
+        currentWeather['temp'].set(f"{round(data['main']['temp_min'] - 273.15, 1)} - {round(data['main']['temp_max'] - 273.15, 1)} ℃")
         currentWeather['lastUptade'].set(f'Last Uptade: {datetime.now().strftime("%H:%M.%S")}')
 
-        new_photo = ImageTk.PhotoImage(Image.open(BytesIO(requests.get(f'https://flagsapi.com/{data['sys']['country']}/flat/64.png').content)).resize((160, 160)))
+        new_photo = ImageTk.PhotoImage(Image.open(BytesIO(requests.get(f"https://flagsapi.com/{data['sys']['country']}/flat/64.png").content)).resize((160, 160)))
         label.config(image=new_photo)
         label.image = new_photo
 
